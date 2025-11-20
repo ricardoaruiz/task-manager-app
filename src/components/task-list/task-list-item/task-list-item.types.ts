@@ -1,0 +1,12 @@
+import type { ComponentProps } from 'react'
+
+export type TaskListItemProps = ComponentProps<'li'>
+export type TaskListItemTitleProps = ComponentProps<'h2'>
+export type TaskListItemDescriptionProps = ComponentProps<'p'>
+export type TaskListItemGroupProps = ComponentProps<'div'>
+export type TaskListItemStatusProps = ComponentProps<'div'> & {
+  completed: boolean
+}
+export type TaskListItemButtonProps = ComponentProps<'button'> & {
+  completed: boolean
+}
