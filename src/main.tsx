@@ -10,8 +10,8 @@ import { routeTree } from './routeTree.gen'
 const router = createRouter({ routeTree })
 const queryClient = new QueryClient()
 
-const rootElement = document.getElementById('root')
-if (!rootElement) {
+const root = document.getElementById('root')
+if (!root) {
   throw new Error('Root element not found')
 }
 
@@ -21,7 +21,7 @@ declare module '@tanstack/react-router' {
   }
 }
 
-createRoot(rootElement).render(
+createRoot(root).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
