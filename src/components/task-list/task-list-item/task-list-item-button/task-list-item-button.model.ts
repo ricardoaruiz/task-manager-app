@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 import { useCompleteTask } from '@/hooks/useCompleteTask'
+import { TASKS_QUERY_KEY } from '@/hooks/useListTasks'
 import { useUnCompleteTask } from '@/hooks/useUnCompleteTask'
 import type { Task } from '@/http/tasks/list'
 import type { TaskListItemButtonModelProps } from './task-list-item-button.types'
@@ -14,7 +15,7 @@ export function useTaskListItemButtonModel({
   const updateViewData = () => {
     queryClient
       .getQueriesData({
-        queryKey: ['tasks'],
+        queryKey: [TASKS_QUERY_KEY],
       })
       .forEach(([key, _]) => {
         queryClient.setQueryData(key, (oldData: { tasks: Task[] }) => {
