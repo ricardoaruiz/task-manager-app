@@ -34,7 +34,10 @@ export function TaskListItemsView({
 
           <TaskListItem.Group className="items-end">
             <TaskListItem.Status completed={!!task.completed_at} />
-            <TaskListItem.Button completed={!!task.completed_at} />
+            <TaskListItem.Button
+              taskId={task.id}
+              completed={!!task.completed_at}
+            />
           </TaskListItem.Group>
         </TaskListItem.Root>
       ))}

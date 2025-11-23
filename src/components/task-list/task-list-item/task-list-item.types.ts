@@ -7,6 +7,3 @@ export type TaskListItemGroupProps = ComponentProps<'div'>
 export type TaskListItemStatusProps = ComponentProps<'div'> & {
   completed: boolean
 }
-export type TaskListItemButtonProps = ComponentProps<'button'> & {
-  completed: boolean
-}
