@@ -8,38 +8,34 @@ export function TaskListItemToggleButtonView({
 }: TaskListItemToggleButtonViewProps) {
   const { isCompleted, toggleTaskStatus, isPending } = model
 
+  const pendingState = (
+    <>
+      <Loader2Icon className="h-5 w-5 animate-spin" />
+      Processing...
+    </>
+  )
+
+  const initislState = !isCompleted ? (
+    <>
+      <CheckIcon className="h-5 w-5" />
+      Complete Task
+    </>
+  ) : (
+    <>
+      <Undo2Icon className="h-5 w-5" />
+      Uncomplete Task
+    </>
+  )
+
   return (
     <Button
       variant="outline"
       onClick={toggleTaskStatus}
       disabled={isPending}
+      aria-busy={isPending}
       {...props}
     >
-      {!isCompleted &&
-        (isPending ? (
-          <>
-            <Loader2Icon className="h-5 w-5 animate-spin" />
-            Processing...
-          </>
-        ) : (
-          <>
-            <CheckIcon className="h-5 w-5" />
-            Complete Task
-          </>
-        ))}
-
-      {isCompleted &&
-        (isPending ? (
-          <>
-            <Loader2Icon className="h-5 w-5 animate-spin" />
-            Processing...
-          </>
-        ) : (
-          <>
-            <Undo2Icon className="h-5 w-5" />
-            Uncomplete Task
-          </>
-        ))}
+      {isPending ? pendingState : initislState}
     </Button>
   )
 }
