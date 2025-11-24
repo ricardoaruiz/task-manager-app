@@ -3,7 +3,7 @@ import { TaskListItemDeleteleButton as DeleteButton } from './task-list-item-del
 import { TaskListItemDescription as Description } from './task-list-item-description'
 import { TaskListItemGroupView as Group } from './task-list-item-group.view'
 import { TaskListItemStatus as Status } from './task-list-item-status'
-import { TaskListItemTitleView as Title } from './task-list-item-title.view'
+import { TaskListItemTitle as Title } from './task-list-item-title'
 import { TaskListItemToggleButton as ToggleButton } from './task-list-item-toggle-button'
 
 export const TaskListItem = {
