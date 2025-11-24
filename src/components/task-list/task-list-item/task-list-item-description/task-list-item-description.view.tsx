@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import type { TaskListItemDescriptionProps } from './task-list-item.types'
+import type { TaskListItemDescriptionProps } from './task-list-item-description.types'
 
 export function TaskListItemDescriptionView({
   className,
