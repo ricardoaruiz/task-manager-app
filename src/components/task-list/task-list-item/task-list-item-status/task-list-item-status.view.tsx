@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import type { TaskListItemStatusProps } from './task-list-item.types'
+import type { TaskListItemStatusProps } from '../task-list-item.types'
 
 export function TaskListItemStatusView({
   completed,
