@@ -13,5 +13,6 @@
   },
   "search.exclude": {
     "**/routeTree.gen.ts": true
-  }
+  },
+  "window.zoomLevel": 2
 }

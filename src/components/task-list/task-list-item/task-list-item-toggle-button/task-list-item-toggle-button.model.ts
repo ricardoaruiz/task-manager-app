@@ -4,12 +4,12 @@ import { useCompleteTask } from '@/hooks/useCompleteTask'
 import { TASKS_QUERY_KEY } from '@/hooks/useListTasks'
 import { useUnCompleteTask } from '@/hooks/useUnCompleteTask'
 import type { Task } from '@/http/tasks/list'
-import type { TaskListItemButtonModelProps } from './task-list-item-button.types'
+import type { TaskListItemToggleButtonModelProps } from './task-list-item-toggle-button.types'
 
-export function useTaskListItemButtonModel({
+export function useTaskListItemToggleButtonModel({
   taskId,
   completed,
-}: TaskListItemButtonModelProps) {
+}: TaskListItemToggleButtonModelProps) {
   const queryClient = useQueryClient()
 
   const updateViewData = () => {

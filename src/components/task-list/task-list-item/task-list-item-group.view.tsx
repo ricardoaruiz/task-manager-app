@@ -5,7 +5,5 @@ export function TaskListItemGroupView({
   className,
   ...props
 }: TaskListItemGroupProps) {
-  return (
-    <div className={cn('flex flex-1 flex-col gap-4', className)} {...props} />
-  )
+  return <div className={cn('flex flex-col gap-4', className)} {...props} />
 }

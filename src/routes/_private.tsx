@@ -49,7 +49,9 @@ const PrivateLayout = () => {
         </div>
       </div>
 
-      <Outlet />
+      <div className="container max-w-[700px] mx-auto px-4">
+        <Outlet />
+      </div>
     </div>
   )
 }

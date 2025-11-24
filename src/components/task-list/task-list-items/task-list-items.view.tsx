@@ -1,3 +1,5 @@
+import { ArchiveIcon, Trash2Icon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { TaskListItem } from '../task-list-item'
 import type { TaskListItemsViewProps } from './task-list-items.types'
@@ -23,24 +25,64 @@ export function TaskListItemsView({
 
   return (
     <ul className={cn('flex flex-col gap-4', className)} {...props}>
-      {tasksData.map((task) => (
-        <TaskListItem.Root key={task.id}>
-          <TaskListItem.Group>
-            <TaskListItem.Title>{task.title}</TaskListItem.Title>
-            <TaskListItem.Description>
-              {task.description}
-            </TaskListItem.Description>
-          </TaskListItem.Group>
+      {tasksData.map((task) => {
+        const isCompleted = !!task.completed_at
 
-          <TaskListItem.Group className="items-end">
-            <TaskListItem.Status completed={!!task.completed_at} />
-            <TaskListItem.Button
-              taskId={task.id}
-              completed={!!task.completed_at}
-            />
-          </TaskListItem.Group>
-        </TaskListItem.Root>
-      ))}
+        return (
+          <TaskListItem.Root
+            key={task.id}
+            className="justify-start md:justify-between"
+          >
+            <TaskListItem.Group className="flex-1/2">
+              <TaskListItem.Title>
+                {task.title}
+                <span className="text-sm ml-5 text-zinc-700">
+                  {task.completed_at
+                    ? `Completed at ${new Date(task.completed_at).toLocaleDateString('pt-BR')}`
+                    : null}
+                </span>
+              </TaskListItem.Title>
+              <TaskListItem.Description>
+                {task.description}
+              </TaskListItem.Description>
+            </TaskListItem.Group>
+
+            <TaskListItem.Group className="flex-1/3">
+              <div className="flex items-center justify-center gap-2">
+                <TaskListItem.Status completed={!!task.completed_at} />
+
+                {!isCompleted && (
+                  // TODO: implement task item delete button
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="ml-4 focus:ring-2 focus:ring-red-300"
+                    aria-label="Remove task"
+                  >
+                    <Trash2Icon />
+                  </Button>
+                )}
+
+                {isCompleted && (
+                  // TODO: implement task item archive button
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="ml-4 focus:ring-2 focus:ring-red-300"
+                    aria-label="Archive task"
+                  >
+                    <ArchiveIcon />
+                  </Button>
+                )}
+              </div>
+              <TaskListItem.ToggleButton
+                taskId={task.id}
+                completed={isCompleted}
+              />
+            </TaskListItem.Group>
+          </TaskListItem.Root>
+        )
+      })}
     </ul>
   )
 }

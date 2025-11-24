@@ -7,7 +7,7 @@ function TaskListPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <div className="container max-w-[700px] mx-auto space-y-5 flex flex-col">
+    <div className="space-y-5 flex flex-col">
       <TaskList.Form id="task-list-form" />
       <TaskList.Button isLoading={isLoading} form="task-list-form" />
       <TaskList.List updateIsLoading={(loading) => setIsLoading(loading)} />

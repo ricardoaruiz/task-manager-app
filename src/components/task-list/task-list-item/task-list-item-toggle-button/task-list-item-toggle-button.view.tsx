@@ -1,11 +1,11 @@
 import { CheckIcon, Loader2Icon, Undo2Icon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import type { TaskListItemButtonViewProps } from './task-list-item-button.types'
+import type { TaskListItemToggleButtonViewProps } from './task-list-item-toggle-button.types'
 
-export function TaskListItemButtonView({
+export function TaskListItemToggleButtonView({
   model,
   ...props
-}: TaskListItemButtonViewProps) {
+}: TaskListItemToggleButtonViewProps) {
   const { isCompleted, toggleTaskStatus, isPending } = model
 
   return (
