@@ -13,6 +13,8 @@ export function TaskListItemDeleteButtonView({
       variant="ghost"
       onClick={deleteTask}
       disabled={isDeleteTaskPending}
+      aria-label="delete task"
+      aria-busy={isDeleteTaskPending}
       {...props}
     >
       {isDeleteTaskPending ? (
