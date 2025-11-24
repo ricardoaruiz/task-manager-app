@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { useTaskListItemToggleButtonModel } from './task-list-item-toggle-button.model'
-import { TaskListItemToggleButtonView } from './task-list-item-toggle-button.view'
+import type { useTaskListItemToggleButtonModel } from '../task-list-item-toggle-button.model'
+import { TaskListItemToggleButtonView } from '../task-list-item-toggle-button.view'
 
 describe('TaskListItemToggleButton', () => {
   let model: ReturnType<typeof useTaskListItemToggleButtonModel>

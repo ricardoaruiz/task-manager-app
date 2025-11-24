@@ -1,8 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-
-import { TaskListItemDeleteButtonView } from './task-list-item-delete-button.view'
+import { TaskListItemDeleteButtonView } from '../task-list-item-delete-button.view'
 
 describe('TaskListItemDeleteButtonView', () => {
   const deleteTask = vi.fn(() => Promise.resolve())
