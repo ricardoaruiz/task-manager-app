@@ -1,4 +1,4 @@
-import { ArchiveIcon, Trash2Icon } from 'lucide-react'
+import { ArchiveIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { TaskListItem } from '../task-list-item'
@@ -51,17 +51,10 @@ export function TaskListItemsView({
               <div className="flex items-center justify-center gap-2">
                 <TaskListItem.Status completed={!!task.completed_at} />
 
-                {!isCompleted && (
-                  // TODO: implement task item delete button
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="ml-4 focus:ring-2 focus:ring-red-300"
-                    aria-label="Remove task"
-                  >
-                    <Trash2Icon />
-                  </Button>
-                )}
+                <TaskListItem.DeleteButton
+                  taskId={task.id}
+                  isVisible={!isCompleted}
+                />
 
                 {isCompleted && (
                   // TODO: implement task item archive button

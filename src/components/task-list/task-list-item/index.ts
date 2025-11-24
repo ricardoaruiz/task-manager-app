@@ -1,15 +1,17 @@
 import { TaskListItemView as Root } from './task-list-item.view'
-import { TaskListDescriptionView as Description } from './task-list-item-description.view'
+import { TaskListItemDeleteleButton as DeleteButton } from './task-list-item-delete-button'
+import { TaskListItemDescriptionView as Description } from './task-list-item-description.view'
 import { TaskListItemGroupView as Group } from './task-list-item-group.view'
 import { TaskListItemStatusView as Status } from './task-list-item-status.view'
-import { TaskListTitleView as Title } from './task-list-item-title.view'
-import { TaskListItemToggleButtonViewModel as ToggleButton } from './task-list-item-toggle-button/task-list-item-toggle-button.viewmodel'
+import { TaskListItemTitleView as Title } from './task-list-item-title.view'
+import { TaskListItemToggleButton as ToggleButton } from './task-list-item-toggle-button'
 
 export const TaskListItem = {
   Root,
+  Group,
   Title,
   Description,
-  Group,
-  ToggleButton,
   Status,
+  ToggleButton,
+  DeleteButton,
 }

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import type { TaskListItemTitleProps } from './task-list-item.types'
 
-export function TaskListTitleView({
+export function TaskListItemTitleView({
   className,
   ...props
 }: TaskListItemTitleProps) {
