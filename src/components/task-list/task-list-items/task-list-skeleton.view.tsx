@@ -8,7 +8,7 @@ export function TaskListSkeletonView({
   return (
     <ul className="flex flex-col gap-4">
       {Array.from({ length: count }).map((_, index) => (
-        <TaskListItem.Root key={index}>
+        <TaskListItem.Root key={index} data-testid="skeleton-item">
           <TaskListItem.Group className="flex-2">
             <Skeleton className="h-10 w-full bg-gray-300 rounded"></Skeleton>
             <Skeleton className="h-6 w-full bg-gray-300 rounded"></Skeleton>

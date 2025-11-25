@@ -11,7 +11,6 @@ export function TaskListItemsView({
   ...props
 }: TaskListItemsViewProps) {
   const { tasksData, isTasksLoading } = model
-  console.log('🚀 ~ TaskListItemsView ~ tasksData:', tasksData)
   const noDataFound = !isTasksLoading && !tasksData.length
 
   if (isTasksLoading) {
