@@ -1,4 +1,3 @@
 import type { ComponentProps } from 'react'
 
 export type TaskListItemProps = ComponentProps<'li'>
-export type TaskListItemGroupProps = ComponentProps<'div'>

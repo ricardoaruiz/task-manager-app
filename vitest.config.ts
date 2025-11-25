@@ -10,12 +10,12 @@ export default defineConfig({
     globals: true,
      coverage: {
       provider: 'v8',
-      include: ['src/**/*.ts', 'src/**/*.tsx'],
+      // include: ['src/**/*.ts', 'src/**/*.tsx'],
+      include: ['src'],
       exclude: [
-        'src/test/**', 
-        'src/**/*.spec.ts', 
-        'src/**/*.spec.tsx', 
+        'src/__tests__/**', 
         'src/components/ui/**/*', 
+        'src/components/**/index.ts', 
         "src/env.ts", 
         "src/main.tsx", 
         "src/routeTree.gen.ts", 

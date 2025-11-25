@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import type { TaskListItemGroupProps } from './task-list-item.types'
+import type { TaskListItemGroupProps } from './task-list-item-group.types'
 
 export function TaskListItemGroupView({
   className,
