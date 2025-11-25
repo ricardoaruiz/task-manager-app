@@ -30,6 +30,9 @@ const PrivateLayout = () => {
             <Link to="/tasks" className="[&.active]:font-bold">
               Tasks
             </Link>
+            <Link to="/tasks/archived" className="[&.active]:font-bold">
+              Archived
+            </Link>
           </div>
 
           <div className="flex gap-5 items-center">

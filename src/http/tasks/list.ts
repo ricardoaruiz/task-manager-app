@@ -5,6 +5,7 @@ export type Task = {
   title: string
   description: string
   completed_at: string | null
+  archived_at: string | null
 }
 
 export type ListAllTasksResponse = {
@@ -16,6 +17,7 @@ export type ListAllTasksParams = {
   description?: string
   completedStatus?: string
   pendingStatus?: string
+  isArchived?: boolean
 }
 
 export async function listTasks(
@@ -36,6 +38,9 @@ export async function listTasks(
   }
   if (!completed && pending) {
     url.searchParams.append('status', 'pending')
+  }
+  if (params.isArchived) {
+    url.searchParams.append('isArchived', 'true')
   }
 
   const response = await api.get<ListAllTasksResponse>(url.toString())

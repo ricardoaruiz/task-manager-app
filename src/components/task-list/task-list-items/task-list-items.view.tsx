@@ -24,6 +24,7 @@ export function TaskListItemsView({
   return (
     <ul className={cn('flex flex-col gap-4', className)} {...props}>
       {tasksData.map((task) => {
+        const isArchived = !!task.archived_at
         const isCompleted = !!task.completed_at
 
         return (
@@ -31,7 +32,11 @@ export function TaskListItemsView({
             key={task.id}
             className="justify-start md:justify-between"
           >
-            <TaskListItem.Group className="flex-1/2">
+            <TaskListItem.Group
+              className={cn('flex-1/2', {
+                'flex-1': isArchived,
+              })}
+            >
               <TaskListItem.Title>
                 {task.title}
                 <span className="text-sm ml-5 text-zinc-700">
@@ -45,21 +50,26 @@ export function TaskListItemsView({
               </TaskListItem.Description>
             </TaskListItem.Group>
 
-            <TaskListItem.Group className="flex-1/3">
+            <TaskListItem.Group
+              className={cn('flex-1/3', {
+                hidden: isArchived,
+              })}
+            >
               <div className="flex items-center justify-center gap-2">
-                <TaskListItem.Status completed={!!task.completed_at} />
+                <TaskListItem.Status completed={isCompleted} />
                 <TaskListItem.DeleteButton
                   taskId={task.id}
-                  isVisible={!isCompleted}
+                  isVisible={!isCompleted && !isArchived}
                 />
                 <TaskListItem.ArchiveButton
                   taskId={task.id}
-                  isVisible={isCompleted}
+                  isVisible={isCompleted && !isArchived}
                 />
               </div>
               <TaskListItem.ToggleButton
                 taskId={task.id}
                 completed={isCompleted}
+                isVisible={!isArchived}
               />
             </TaskListItem.Group>
           </TaskListItem.Root>

@@ -2,10 +2,16 @@ import { Label } from '@radix-ui/react-label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Field, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import type { TaskListFilterFormViewProps } from './task-list-filter-form.types'
+import { cn } from '@/lib/utils'
+import type {
+  TaskListFilterFormViewProps,
+  TaskListFormHiddenFields,
+} from './task-list-filter-form.types'
 
 export function TaskListFilterFormView({
   model,
+  formTitle,
+  hidedFields,
   ...props
 }: TaskListFilterFormViewProps) {
   const {
@@ -16,16 +22,21 @@ export function TaskListFilterFormView({
     handleFormSubmit,
   } = model
 
+  const isHiddenField = (fields: TaskListFormHiddenFields) => {
+    if (!hidedFields) return false
+    return fields.some((field) => hidedFields.includes(field))
+  }
+
   return (
     <div>
-      <h1 className="text-3xl text-center">Tasks</h1>
+      <h1 className="text-3xl text-center">{formTitle}</h1>
 
       <form
         onSubmit={handleFormSubmit}
         className="flex flex-col gap-5"
         {...props}
       >
-        <Field>
+        <Field className={isHiddenField(['title']) ? 'hidden' : ''}>
           <FieldLabel htmlFor="title">Title</FieldLabel>
           <Input
             type="title"
@@ -35,7 +46,7 @@ export function TaskListFilterFormView({
             defaultValue={title}
           />
         </Field>
-        <Field>
+        <Field className={isHiddenField(['description']) ? 'hidden' : ''}>
           <FieldLabel htmlFor="description">Description</FieldLabel>
           <Input
             type="description"
@@ -46,7 +57,12 @@ export function TaskListFilterFormView({
           />
         </Field>
 
-        <div className="flex flex-col gap-4">
+        <div
+          className={cn(
+            'flex flex-col gap-4',
+            isHiddenField(['status']) ? 'hidden' : '',
+          )}
+        >
           <FieldLabel>Status</FieldLabel>
 
           <div className="flex gap-4 items-center">

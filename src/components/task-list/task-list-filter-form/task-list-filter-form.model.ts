@@ -1,7 +1,9 @@
-import { useRouter, useSearch } from '@tanstack/react-router'
+import { useLocation, useNavigate, useSearch } from '@tanstack/react-router'
 
 export function useTaskListFilterFormModel() {
-  const router = useRouter()
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const { title, description, completedStatus, pendingStatus } = useSearch({
     strict: false,
   })
@@ -14,8 +16,8 @@ export function useTaskListFilterFormModel() {
     const completedStatus = formData.get('completedStatus') as string
     const pendingStatus = formData.get('pendingStatus') as string
 
-    router.navigate({
-      to: '/tasks',
+    navigate({
+      to: location.pathname,
       search: {
         title: title || undefined,
         description: description || undefined,

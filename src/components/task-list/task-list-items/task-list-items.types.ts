@@ -3,6 +3,7 @@ import type { useTaskListItemsModel } from './task-list.model'
 
 export type TaskListItemViewModelProps = {
   updateIsLoading: (isLoading: boolean) => void
+  isArchived?: boolean
 }
 
 export type UseTaskListItemsModel = {
@@ -13,6 +14,7 @@ export type UseTaskListItemsModel = {
     pendingStatus?: string
   }
   updateIsLoading: (isLoading: boolean) => void
+  isArchived?: boolean
 }
 
 export type TaskListItemsViewProps = ComponentProps<'ul'> & {

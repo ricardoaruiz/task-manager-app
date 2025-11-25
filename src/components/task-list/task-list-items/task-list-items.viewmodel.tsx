@@ -5,6 +5,7 @@ import { TaskListItemsView } from './task-list-items.view'
 
 export function TaskListItemsViewModel({
   updateIsLoading,
+  isArchived,
 }: TaskListItemViewModelProps) {
   const search = useSearch({
     strict: false,
@@ -13,6 +14,7 @@ export function TaskListItemsViewModel({
   const model = useTaskListItemsModel({
     filter: { ...search },
     updateIsLoading,
+    isArchived,
   })
 
   return <TaskListItemsView model={model} />

@@ -8,6 +8,7 @@ type UseListTasksFilter = {
   description?: string
   completedStatus?: string
   pendingStatus?: string
+  isArchived?: boolean
 }
 
 export function useListTasks({
@@ -15,16 +16,23 @@ export function useListTasks({
   description,
   completedStatus,
   pendingStatus,
+  isArchived,
 }: UseListTasksFilter = {}) {
   const { data, isLoading, refetch } = useQuery<
     Awaited<ReturnType<typeof listTasks>>
   >({
     queryKey: [
       TASKS_QUERY_KEY,
-      { title, description, completedStatus, pendingStatus },
+      { title, description, completedStatus, pendingStatus, isArchived },
     ],
     queryFn: () =>
-      listTasks({ title, description, completedStatus, pendingStatus }),
+      listTasks({
+        title,
+        description,
+        completedStatus,
+        pendingStatus,
+        isArchived,
+      }),
   })
 
   return {

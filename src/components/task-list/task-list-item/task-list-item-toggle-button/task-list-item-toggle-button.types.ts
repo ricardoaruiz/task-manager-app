@@ -14,4 +14,5 @@ export type TaskListItemToggleButtonViewModelProps =
   ComponentProps<'button'> & {
     taskId: string
     completed: boolean
+    isVisible?: boolean
   }

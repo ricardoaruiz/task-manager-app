@@ -5,8 +5,13 @@ import { TaskListItemToggleButtonView } from './task-list-item-toggle-button.vie
 export function TaskListItemToggleButtonViewModel({
   taskId,
   completed,
+  isVisible = true,
 }: TaskListItemToggleButtonViewModelProps) {
   const model = useTaskListItemToggleButtonModel({ taskId, completed })
+
+  if (!isVisible) {
+    return null
+  }
 
   return <TaskListItemToggleButtonView model={model} />
 }

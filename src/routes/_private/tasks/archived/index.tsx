@@ -3,14 +3,21 @@ import { useState } from 'react'
 import z from 'zod/v4'
 import { TaskList } from '@/components/task-list'
 
-function TaskListPage() {
+function ArchiveTasksPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
     <div className="space-y-5 flex flex-col">
-      <TaskList.Form id="task-list-form" formTitle="Tasks" />
+      <TaskList.Form
+        formTitle="Archived Tasks"
+        id="task-list-form"
+        hidedFields={['status']}
+      />
       <TaskList.Button isLoading={isLoading} form="task-list-form" />
-      <TaskList.List updateIsLoading={(loading) => setIsLoading(loading)} />
+      <TaskList.List
+        isArchived
+        updateIsLoading={(loading) => setIsLoading(loading)}
+      />
     </div>
   )
 }
@@ -22,7 +29,7 @@ const searchSchema = z.object({
   pendingStatus: z.string().optional(),
 })
 
-export const Route = createFileRoute('/_private/tasks/')({
-  component: TaskListPage,
+export const Route = createFileRoute('/_private/tasks/archived/')({
+  component: ArchiveTasksPage,
   validateSearch: searchSchema.parse,
 })
