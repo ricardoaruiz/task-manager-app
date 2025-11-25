@@ -45,12 +45,10 @@ describe('TaskListDeleteButtonModel', () => {
         { position: 'top-center' },
       )
     })
-
-    // toastErrorSpy.mockRestore()
   })
 
   it('should able not show toast error when deleteTask succeeds', async () => {
-    const toastErrorSpy = vi.spyOn(toast, 'error').mockImplementation(() => {
+    const toastSuccesSpy = vi.spyOn(toast, 'success').mockImplementation(() => {
       return 'mocked-toast-id'
     })
 
@@ -63,7 +61,10 @@ describe('TaskListDeleteButtonModel', () => {
     act(() => result.current.deleteTask())
 
     await vi.waitFor(() => {
-      expect(toastErrorSpy).not.toHaveBeenCalled()
+      expect(toastSuccesSpy).toHaveBeenCalledWith(
+        'Task deleted successfully.',
+        { position: 'top-center' },
+      )
     })
   })
 })

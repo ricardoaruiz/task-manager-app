@@ -24,7 +24,10 @@ export function useTaskListItemDeleteButtonModel({
   }
 
   const { deleteTaskMutation, isDeleteTaskPending } = useDeleteTask({
-    onSuccess: () => updateViewData(),
+    onSuccess: () => {
+      updateViewData()
+      toast.success('Task deleted successfully.', { position: 'top-center' })
+    },
     onError: () => {
       toast.error('Failed to delete the task. Please try again.', {
         position: 'top-center',

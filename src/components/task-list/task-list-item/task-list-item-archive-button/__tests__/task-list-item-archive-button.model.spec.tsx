@@ -47,7 +47,7 @@ describe('TaskListDeleteButtonModel', () => {
   })
 
   it('should able not show toast error when archiveTask succeeds', async () => {
-    const toastErrorSpy = vi.spyOn(toast, 'error').mockImplementation(() => {
+    const toastSuccesSpy = vi.spyOn(toast, 'success').mockImplementation(() => {
       return 'mocked-toast-id'
     })
 
@@ -60,7 +60,10 @@ describe('TaskListDeleteButtonModel', () => {
     act(() => result.current.archiveTask())
 
     await vi.waitFor(() => {
-      expect(toastErrorSpy).not.toHaveBeenCalled()
+      expect(toastSuccesSpy).toHaveBeenCalledWith(
+        'Task archived successfully!',
+        { position: 'top-center' },
+      )
     })
   })
 })
