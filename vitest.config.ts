@@ -6,11 +6,10 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
+    setupFiles: ['src/setupTests.ts'],
     globals: true,
      coverage: {
       provider: 'v8',
-      // include: ['src/**/*.ts', 'src/**/*.tsx'],
       include: ['src'],
       exclude: [
         'src/__tests__/**', 

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
+import { render, screen } from '@/lib/test-utils'
 import { TaskListItemStatusView } from '../task-list-item-status.view'
 
 describe('TaskListItemStatusView', () => {

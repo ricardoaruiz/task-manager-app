@@ -1,21 +1,8 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { act, renderHook } from '@testing-library/react'
 import { toast } from 'react-toastify'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { deleteTask } from '@/http/tasks/delete'
+import { act, renderHookWithProviders } from '@/lib/test-utils'
 import { useTaskListItemDeleteButtonModel } from '../task-list-item-delete-button.model'
-
-// TODO criar um utils para teste com react-query
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { retry: false },
-    mutations: { retry: false },
-  },
-})
-
-const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-)
 
 // Mock do react-query deve estar no topo
 vi.mock('@tanstack/react-query', async () => {
@@ -46,9 +33,8 @@ describe('TaskListDeleteButtonModel', () => {
       new Error('Failed to delete the task'),
     )
 
-    const { result } = renderHook(
-      () => useTaskListItemDeleteButtonModel({ taskId: 'test-task-id' }),
-      { wrapper },
+    const { result } = renderHookWithProviders(() =>
+      useTaskListItemDeleteButtonModel({ taskId: 'test-task-id' }),
     )
 
     act(() => result.current.deleteTask())
@@ -70,9 +56,8 @@ describe('TaskListDeleteButtonModel', () => {
 
     vi.mocked(deleteTask).mockResolvedValueOnce(undefined)
 
-    const { result } = renderHook(
-      () => useTaskListItemDeleteButtonModel({ taskId: 'test-task-id' }),
-      { wrapper },
+    const { result } = renderHookWithProviders(() =>
+      useTaskListItemDeleteButtonModel({ taskId: 'test-task-id' }),
     )
 
     act(() => result.current.deleteTask())
