@@ -1,5 +1,3 @@
-import { ArchiveIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { TaskListItem } from '../task-list-item'
 import type { TaskListItemsViewProps } from './task-list-items.types'
@@ -50,23 +48,14 @@ export function TaskListItemsView({
             <TaskListItem.Group className="flex-1/3">
               <div className="flex items-center justify-center gap-2">
                 <TaskListItem.Status completed={!!task.completed_at} />
-
                 <TaskListItem.DeleteButton
                   taskId={task.id}
                   isVisible={!isCompleted}
                 />
-
-                {isCompleted && (
-                  // TODO: implement task item archive button
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="ml-4 focus:ring-2 focus:ring-red-300"
-                    aria-label="Archive task"
-                  >
-                    <ArchiveIcon />
-                  </Button>
-                )}
+                <TaskListItem.ArchiveButton
+                  taskId={task.id}
+                  isVisible={isCompleted}
+                />
               </div>
               <TaskListItem.ToggleButton
                 taskId={task.id}

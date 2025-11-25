@@ -1,4 +1,5 @@
 import { TaskListItemView as Root } from './task-list-item.view'
+import { TaskListItemArchiveButton as ArchiveButton } from './task-list-item-archive-button'
 import { TaskListItemDeleteleButton as DeleteButton } from './task-list-item-delete-button'
 import { TaskListItemDescription as Description } from './task-list-item-description'
 import { TaskListItemGroup as Group } from './task-list-item-group'
@@ -13,5 +14,6 @@ export const TaskListItem = {
   Description,
   Status,
   ToggleButton,
+  ArchiveButton,
   DeleteButton,
 }
